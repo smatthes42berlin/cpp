@@ -1,0 +1,13 @@
+
+
+# ignore all files without extension
+*
+!*/
+!*.*
+#
+**/*.o
+**/*.a
+**/*.out
+**/*.pdf
+**/*.log
+**/*.txt
