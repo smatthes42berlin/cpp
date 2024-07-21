@@ -24,38 +24,23 @@ bool PhoneBook::createNewContact(void)
 	std::cout << "Creating a new Contact" << std::endl;
 	userInput = this->_getUserInput("First Name");
 	if (userInput.length() == 0)
-	{
-		std::cin.clear();
 		return (false);
-	}
 	newContact.setFirstName(userInput);
 	userInput = this->_getUserInput("Last Name");
 	if (userInput.length() == 0)
-	{
-		std::cin.clear();
 		return (false);
-	}
 	newContact.setLastName(userInput);
 	userInput = this->_getUserInput("Nick Name");
 	if (userInput.length() == 0)
-	{
-		std::cin.clear();
 		return (false);
-	}
 	newContact.setNickName(userInput);
 	userInput = this->_getUserInput("Phone Number");
 	if (userInput.length() == 0)
-	{
-		std::cin.clear();
 		return (false);
-	}
 	newContact.setPhoneNumber(userInput);
 	userInput = this->_getUserInput("Darkest Secret");
 	if (userInput.length() == 0)
-	{
-		std::cin.clear();
 		return (false);
-	}
 	newContact.setDarkestSecret(userInput);
 	this->_add(newContact);
 	std::cout << "hi!";
@@ -69,12 +54,10 @@ std::string PhoneBook::_getUserInput(const std::string prompt) const
 	{
 		std::cout << "Enter " << prompt << std::endl;
 		std::getline(std::cin, detail);
+		if (std::cin.eof())
+			return ("");
 		if (!detail.empty())
 			break ;
-		if (std::cin.eof())
-		{
-			return ("");
-		}
 		std::cout << "Input cannot be empty." << std::endl;
 	}
 	return (detail);
@@ -92,10 +75,30 @@ void PhoneBook::_add(Contact newContact)
 	return ;
 }
 
+int PhoneBook::_getUserInt(void) const
+{
+	int index;
+
+	std::cout << "Enter the index of the entry you wanna display:" << std::endl;
+	std::cin >> index;
+	if (std::cin.eof())
+		return (-2);
+	if (index < 1 || index > PhoneBook::_maxNbrContacts
+		|| index > this->_nbrContacts || std::cin.fail())
+	{
+		std::cout << "Invalid integer. Please enter an integer corresponding to a phone book entries index!";
+		std::cout << std::endl;
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		return (-1);
+	}
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	return (index);
+}
+
 void PhoneBook::search(void) const
 {
 	int index;
-	int maxC = PhoneBook::_maxNbrContacts;
 	if (this->_nbrContacts < 1)
 	{
 		std::cout << "There are currently no contacts in the phonebook,";
@@ -104,25 +107,13 @@ void PhoneBook::search(void) const
 		return ;
 	}
 	this->_printAllContacts();
-	std::cout << "Enter the index of the entry you wanna display:" << std::endl;
-	// std::cin.clear();
-	// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	std::cin >> index;
-	if (index < 1 || index > maxC)
+	while (true)
 	{
-		std::cout << "The Phonebook can store between 1 and ";
-		std::cout << maxC << " contacts,";
-		std::cout << " please enter a number between 1 and ";
-		std::cout << maxC << " !" << std::endl;
-		return ;
-	}
-	if (index > this->_nbrContacts)
-	{
-		std::cout << "There are currently " << this->_nbrContacts;
-		std::cout << " contacts in the phonebook,";
-		std::cout << " please provide an index between 1 and ";
-		std::cout << this->_nbrContacts << std::endl;
-		return ;
+		index = this->_getUserInt();
+		if (index == -2)
+			return ;
+		if (index >= 0)
+			break ;
 	}
 	this->_printContact(index);
 }
@@ -139,14 +130,28 @@ void PhoneBook::_printContact(int index) const
 
 void PhoneBook::_printAllContacts(void) const
 {
+	std::cout << "     index";
+	std::cout << "|";
+	std::cout << "First Name";
+	std::cout << "|";
+	std::cout << " Last Name";
+	std::cout << "|";
+	std::cout << " Nick Name" << std::endl;
 	for (int i = 0; i < this->_nbrContacts; i++)
 	{
-		std::cout << i + 1 << "|";
+		this->_formatColumn(i + 1);
 		std::cout << this->_formatColumn(this->_contactsStored[i].getFirstName()) << "|";
 		std::cout << this->_formatColumn(this->_contactsStored[i].getLastName()) << "|";
 		std::cout << this->_formatColumn(this->_contactsStored[i].getNickName());
 		std::cout << std::endl;
 	}
+}
+
+void PhoneBook::_formatColumn(int index) const
+{
+	std::cout << "         ";
+	std::cout << index;
+	std::cout << "|";
 }
 
 std::string PhoneBook::_formatColumn(const std::string text) const
@@ -157,6 +162,23 @@ std::string PhoneBook::_formatColumn(const std::string text) const
 		result = text.substr(0, 10 - 1) + '.';
 	}
 	return (std::string(10 - result.length(), ' ') + result);
+}
+
+void PhoneBook::fillPhoneBook(void)
+{
+	Contact	c;
+
+	for (int i = 0; i < this->_maxNbrContacts; i++)
+	{
+		std::string val(5, '0' + i);
+		std::cout << "adding" << std::endl;
+		c.setFirstName(val);
+		c.setLastName(val);
+		c.setNickName(val);
+		c.setPhoneNumber(val);
+		c.setDarkestSecret(val);
+		this->_add(c);
+	}
 }
 
 int PhoneBook::_nbrContacts = 0;

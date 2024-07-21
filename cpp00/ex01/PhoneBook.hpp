@@ -1,8 +1,8 @@
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
 
-#include "Contact.hpp"
-#include "external.hpp"
+# include "Contact.hpp"
+# include "external.hpp"
 
 class PhoneBook
 {
@@ -12,6 +12,7 @@ class PhoneBook
 
 	void search(void) const;
 	bool createNewContact(void);
+	void fillPhoneBook(void);
 
   private:
 	static int _nbrContacts;
@@ -20,11 +21,13 @@ class PhoneBook
 
 	Contact _contactsStored[8];
 
-	void _add(Contact newContact);
 	void _printAllContacts(void) const;
 	void _printContact(int index) const;
 	std::string _getUserInput(const std::string prompt) const;
+	int _getUserInt(void) const;
 	std::string _formatColumn(const std::string text) const;
+	void _formatColumn(const int index) const;
+	void _add(Contact newContact);
 };
 
 #endif

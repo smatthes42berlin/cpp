@@ -6,6 +6,8 @@ int	main(void)
 {
 	PhoneBook	phony;
 
+
+	phony.fillPhoneBook();
 	std::string userCmd;
 	while (1)
 	{
@@ -25,7 +27,10 @@ int	main(void)
 		if (userCmd == "SEARCH")
 			phony.search();
 		if (userCmd == "ADD")
-			phony.createNewContact();
+		{
+			if (!phony.createNewContact())
+				break ;
+		}
 	}
 	return (0);
 }
