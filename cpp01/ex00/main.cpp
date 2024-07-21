@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   external.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes  <smatthes@student.42berlin>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 17:45:23 by smatthes          #+#    #+#             */
-/*   Updated: 2024/07/18 17:46:15 by smatthes         ###   ########.fr       */
+/*   Created: 2024/07/21 09:30:21 by smatthes          #+#    #+#             */
+/*   Updated: 2024/07/21 10:15:34 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef External_H
-# define External_H
+#include "Zombie.hpp"
+#include "external.hpp"
+#include "functions.hpp"
 
-#include <iostream>
-#include <string>
-#include <iomanip>
-#include <limits>
-#include <cctype>
-#include <cstdlib>
+int	main(void)
+{
+	Zombie *heapZombie = newZombie("HeapZombie");
+	heapZombie->announce();
+	delete heapZombie;
 
-#endif
+	randomChump("StackZombie");
+	return (0);
+}

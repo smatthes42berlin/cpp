@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   external.hpp                                       :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smatthes  <smatthes@student.42berlin>      +#+  +:+       +#+        */
+/*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 17:45:23 by smatthes          #+#    #+#             */
-/*   Updated: 2024/07/18 17:46:15 by smatthes         ###   ########.fr       */
+/*   Created: 2024/07/21 10:16:45 by smatthes          #+#    #+#             */
+/*   Updated: 2024/07/21 14:25:12 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef External_H
-# define External_H
+#include "Weapon.hpp"
+#include "external.hpp"
 
-#include <iostream>
-#include <string>
-#include <iomanip>
-#include <limits>
-#include <cctype>
-#include <cstdlib>
+#pragma once
 
-#endif
+class HumanB
+{
+  public:
+	HumanB(std::string name);
+	~HumanB(void);
+
+	void setWeapon(Weapon &giveWeapon);
+	void attack(void) const;
+
+  private:
+	std::string _name;
+	Weapon *_weapon;
+};

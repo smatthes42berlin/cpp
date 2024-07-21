@@ -1,10 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/18 09:18:25 by smatthes          #+#    #+#             */
+/*   Updated: 2024/07/21 10:43:52 by smatthes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
-
-// void	ignoreLine(void)
-// {
-// 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-// }
 
 PhoneBook::PhoneBook(void)
 {

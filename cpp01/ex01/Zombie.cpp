@@ -1,33 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   SampleClass.cpp                                    :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes  <smatthes@student.42berlin>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 08:33:01 by smatthes          #+#    #+#             */
-/*   Updated: 2024/07/18 10:17:28 by smatthes         ###   ########.fr       */
+/*   Created: 2024/07/21 10:16:45 by smatthes          #+#    #+#             */
+/*   Updated: 2024/07/21 10:16:45 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "SampleClass.hpp"
-#include <iostream>
-#include <string>
+#include "Zombie.hpp"
+#include "external.hpp"
 
-
-Sample::Sample()
+Zombie::Zombie(void)
 {
-	std::cout << "Constructor called" << std::endl;
 	return ;
 }
 
-Sample::~Sample(void)
+Zombie::Zombie(std::string name)
 {
-	std::cout << "Destructor called" << std::endl;
+	this->setName(name);
 	return ;
 }
 
-void Sample::setFirstName(std::string first)
+Zombie::~Zombie(void)
 {
-	this->firstName = first;
+	return ;
+}
+
+void Zombie::announce(void) const
+{
+	std::cout << this->getName() << ": BraiiiiiiinnnzzzZ...";
+	std::cout << std::endl;
+}
+
+void Zombie::setName(std::string name)
+{
+	this->_name = name;
+	return ;
+}
+
+std::string Zombie::getName(void) const
+{
+	return (this->_name);
 }
