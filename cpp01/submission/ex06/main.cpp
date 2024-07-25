@@ -5,44 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 09:57:24 by smatthes          #+#    #+#             */
-/*   Updated: 2024/07/25 09:22:27 by smatthes         ###   ########.fr       */
+/*   Created: 2024/07/21 10:16:45 by smatthes          #+#    #+#             */
+/*   Updated: 2024/07/25 10:12:10 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
-#include "PhoneBook.hpp"
+#include "Harl.hpp"
 #include "external.hpp"
 
 int	main(void)
 {
-	PhoneBook	phony;
+	Harl	harler;
 
-
-	// phony.fillPhoneBook();
-	std::string userCmd;
-	while (1)
-	{
-		std::cout << "Please enter 'ADD',";
-		std::cout << "'SEARCH' or 'EXIT' depending on what you wanna do";
-		std::cout << std::endl;
-		std::getline(std::cin, userCmd);
-		if (std::cin.eof())
-			return (0);
-		if (userCmd == "EXIT")
-			break ;
-		if (userCmd != "SEARCH" && userCmd != "ADD")
-		{
-			std::cout << "Unknown command!" << std::endl;
-			continue ;
-		}
-		if (userCmd == "SEARCH")
-			phony.search();
-		if (userCmd == "ADD")
-		{
-			if (!phony.createNewContact())
-				break ;
-		}
-	}
+	std::cout << "From: main call: DEBUG";
+	std::cout << std::endl;
+	harler.complain("DEBUG");
+	std::cout << std::endl;
+	std::cout << "From: main call: INFO";
+	std::cout << std::endl;
+	harler.complain("INFO");
+	std::cout << std::endl;
+	std::cout << "From: main call: WARNING";
+	std::cout << std::endl;
+	harler.complain("WARNING");
+	std::cout << std::endl;
+	std::cout << "From: main call: ERROR";
+	std::cout << std::endl;
+	harler.complain("ERROR");
+	std::cout << std::endl;
+	std::cout << "From: main call: unknown";
+	std::cout << std::endl;
+	harler.complain("unknown");
+	std::cout << std::endl;
 	return (0);
 }

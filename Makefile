@@ -3,7 +3,7 @@ CXX 		= c++
 CXXFLAGS 	= -std=c++98
 
 TARGET 		= test
-FILES 		= test
+FILES 		= Test main
 SRC			= $(FILES:=.cpp)
 OBJ 		= $(SRC:.cpp=.o)
 
