@@ -1,47 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smatthes  <smatthes@student.42berlin>      +#+  +:+       +#+        */
+/*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 09:25:35 by smatthes          #+#    #+#             */
-/*   Updated: 2024/07/21 10:13:15 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:25:16 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Fixed.hpp"
 #include "external.hpp"
 
-Zombie::Zombie(void)
+Fixed::Fixed(void) : _value(0)
 {
 	return ;
 }
 
-Zombie::Zombie(std::string name)
+Fixed::Fixed(const Fixed &bluePrint)
 {
-	this->setName(name);
+	this->setRawBits(bluePrint.getRawBits());
 	return ;
 }
 
-Zombie::~Zombie(void)
+Fixed::~Fixed(void)
 {
 	return ;
 }
 
-void Zombie::announce(void) const
+Fixed &Fixed::operator=(const Fixed &copyFrom)
 {
-	std::cout << this->getName() << ": BraiiiiiiinnnzzzZ...";
-	std::cout << std::endl;
+	if (this == &copyFrom)
+	{
+		return (*this);
+	}
+	this->setRawBits(copyFrom.getRawBits());
+	return (*this);
 }
 
-void Zombie::setName(std::string name)
+int Fixed::getRawBits(void) const
 {
-	this->_name = name;
-	return ;
+	return (this->_value);
 }
 
-std::string Zombie::getName(void) const
+void Fixed::setRawBits(int const raw)
 {
-	return (this->_name);
+	this->_value = raw;
 }

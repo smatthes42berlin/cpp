@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 10:16:45 by smatthes          #+#    #+#             */
-/*   Updated: 2024/07/21 13:46:12 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/08/01 11:05:39 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void Weapon::setType(std::string type)
 	return ;
 }
 
-std::string Weapon::getType(void) const
-{
+const std::string&	Weapon::getType() const {
 	return (this->_type);
 }
+

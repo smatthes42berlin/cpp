@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   external.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smatthes  <smatthes@student.42berlin>      +#+  +:+       +#+        */
+/*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/21 09:44:05 by smatthes          #+#    #+#             */
-/*   Updated: 2024/07/21 09:45:41 by smatthes         ###   ########.fr       */
+/*   Created: 2024/07/21 09:23:07 by smatthes          #+#    #+#             */
+/*   Updated: 2024/08/01 11:57:19 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-#include "external.hpp"
+#pragma once
 
-Zombie	*newZombie(std::string name)
-{
-	Zombie *newZomb = new Zombie(name);
-	return (newZomb);
-}
+# include <string>
+# include <iostream>
+// #include <iomanip>
+// #include <limits>
+// #include <cctype>
+// #include <cstdlib>

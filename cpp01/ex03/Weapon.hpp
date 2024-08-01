@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 10:16:45 by smatthes          #+#    #+#             */
-/*   Updated: 2024/07/21 13:41:25 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/08/01 11:03:44 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Weapon
 	~Weapon(void);
 
 	void setType(std::string type);
-	std::string getType(void) const;
+	const std::string& getType(void) const;
 
   private:
 	std::string _type;
