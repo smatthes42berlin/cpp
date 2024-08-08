@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   external.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/21 09:23:07 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/01 16:44:37 by smatthes         ###   ########.fr       */
+/*   Created: 2024/07/21 09:30:21 by smatthes          #+#    #+#             */
+/*   Updated: 2024/08/04 14:04:59 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "ClapTrap.hpp"
+#include "external.hpp"
 
-# include <string>
-# include <iostream>
-# include <cmath>
-// #include <iomanip>
-// #include <limits>
-// #include <cctype>
-// #include <cstdlib>
+int	main(void)
+{
+	ClapTrap CT1("CT1");
+	ClapTrap CT2("CT2");
+	ClapTrap CT3(CT1);
+	ClapTrap CT4;
+	std::string name;
+
+	CT4 = CT2;
+
+	std::cout << CT1 << std::endl;
+	CT1.attack("CT2");
+	std::cout << CT1 << std::endl;
+
+
+	return (0);
+}

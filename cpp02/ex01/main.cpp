@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 09:30:21 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/01 13:15:43 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:33:46 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,24 @@
 
 int	main(void)
 {
-	Fixed num0 = Fixed(0);
-	Fixed num1 = Fixed(1);
-	Fixed num2 = Fixed(1.01f);
+	Fixed a;
+	Fixed const b(10);
+	Fixed const c(42.42f);
+	Fixed const d(b);
+	a = Fixed(1234.4321f);
+	std::cout << "a is " << a << std::endl;
+	std::cout << "b is " << b << std::endl;
+	std::cout << "c is " << c << std::endl;
+	std::cout << "d is " << d << std::endl;
+	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 
-	std::cout << "num0 = " << num0.getRawBits() << std::endl;
-	std::cout << "num1 = " << num1.getRawBits() << std::endl;
-	std::cout << "num2 = " << num2.getRawBits() << std::endl;
+	std::cout << std::endl << std::endl << std::endl;
 
-
-
-	float test = 8.253; 
-	Fixed fixedPoint = Fixed(test); 
-
-	std::cout << fixedPoint.getFractionPart() << std::endl;
-	std::cout << fixedPoint.toInt() << std::endl;
-
-	return 0;
-
-
-	
+	Fixed const num1(26777216);
+	std::cout << "num1 is " << num1 << std::endl;
 
 	return (0);
 }

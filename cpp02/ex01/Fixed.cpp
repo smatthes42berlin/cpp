@@ -6,14 +6,15 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 09:25:35 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/01 13:11:08 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/08/01 16:45:37 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include "external.hpp"
 
-Fixed::Fixed(void) : _value(0)
+Fixed::Fixed(void)
+	: _value(0)
 {
 	return ;
 }
@@ -81,7 +82,7 @@ int Fixed::fixedToInt(int value)
 
 int Fixed::floatToFixed(float value)
 {
-	return (static_cast<int>(value * Fixed::_scalingFactor));
+	return (static_cast<int>(roundf(value * Fixed::_scalingFactor)));
 }
 
 float Fixed::fixedToFloat(int value)
@@ -89,13 +90,8 @@ float Fixed::fixedToFloat(int value)
 	return (static_cast<float>(value) / Fixed::_scalingFactor);
 }
 
-int	Fixed::getFractionPart(void) const
+std::ostream &operator<<(std::ostream &os, Fixed const &fixed)
 {
-	return this->getRawBits() & 255;
-}
-
-std::ostream &operator<<(std::ostream &os, const Fixed &fixed)
-{
-	os << fixed.toInt() << "." << fixed.getFractionPart();
+	os << fixed.toFloat();
 	return (os);
 }

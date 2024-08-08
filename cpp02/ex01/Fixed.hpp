@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 09:22:39 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/01 13:08:37 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:23:29 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ class Fixed
 	void setRawBits(int const raw);
 	float toFloat(void) const;
 	int toInt(void) const;
-	int getFractionPart(void) const;
 
 	static int intToFixed(int value);
 	static int fixedToInt(int value);
@@ -40,3 +39,5 @@ class Fixed
 	const static int _fractionalBits = 8;
 	const static int _scalingFactor = 1 << Fixed::_fractionalBits;
 };
+
+std::ostream &operator<<(std::ostream &os, Fixed const &fixed);
