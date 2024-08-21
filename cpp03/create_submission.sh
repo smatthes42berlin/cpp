@@ -6,10 +6,6 @@ source_folders=(
     "ex00"
     "ex01"
     "ex02"
-    "ex03"
-    "ex04"
-    "ex05"
-    "ex06"
 )
 
 for folder in "${source_folders[@]}"; do
@@ -34,4 +30,3 @@ for folder in "${source_folders[@]}"; do
     fi
 done
 
-cp "ex04"/test.sh "$target_base_directory"/ex04/
