@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 09:30:21 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/21 20:57:05 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/08/23 15:42:13 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,38 @@
 
 int	main(void)
 {
-	ClapTrap CT1("CT1");
-	ScavTrap CT2("CT2");
-	std::cout << CT2;
-	std::cout << CT1;
+	ScavTrap ST1("ST1");
+	std::cout << std::endl;
+	ScavTrap ST3(ST1);
+	std::cout << std::endl;
+	ScavTrap ST2("ST2");
+	std::cout << std::endl;
+	ScavTrap ST4;
+	std::cout << std::endl;
 
-	CT1.attack("Clap Enemy");
+	ST4 = ST2;
+
+	std::cout << ST2 << std::endl;
+
+	for (int i = 0; i < 51; i++)
+	{
+		ST2.beRepaired(1);
+	}
+
+	std::cout << ST2 << std::endl;
+	ST1.attack("ScavEnemy");
 	std::cout << std::endl;
-	CT1.takeDamage(5);
+	ST2.takeDamage(148);
+	std::cout << ST2 << std::endl;
+	ST2.guardGate();
+	std::cout << ST2 << std::endl;
+	ST2.takeDamage(5);
+	std::cout << ST2 << std::endl;
+	ST2.takeDamage(5);
+	std::cout << ST2 << std::endl;
+	ST2.beRepaired(1);
 	std::cout << std::endl;
-	CT1.beRepaired(2);
-	std::cout << std::endl;
-	CT2.attack("Scav Enemy");
-	std::cout << std::endl;
-	CT2.takeDamage(5);
-	std::cout << std::endl;
-	CT2.beRepaired(2);
-	std::cout << std::endl;
-	CT2.guardGate();
-	std::cout << std::endl;
-	CT2.takeDamage(200);
-	std::cout << std::endl;
-	CT2.guardGate();
-	
-	std::cout << CT2;
-	std::cout << CT1;
+	ST2.guardGate();
+
 	return (0);
 }

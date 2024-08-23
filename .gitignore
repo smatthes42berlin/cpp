@@ -13,3 +13,6 @@
 **/*.pdf
 **/*.log
 **/*.txt
+
+handin/
+submission/

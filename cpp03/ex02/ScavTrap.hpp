@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 09:22:39 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/10 16:29:58 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/08/23 15:31:28 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class ScavTrap : public ClapTrap
 
   private:
 	void _initAttrDefaultScav(void);
+
 };
 
 std::ostream &operator<<(std::ostream &os, ScavTrap const &ScavTrap);

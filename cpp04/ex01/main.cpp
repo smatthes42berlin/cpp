@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/21 09:22:39 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/23 15:31:28 by smatthes         ###   ########.fr       */
+/*   Created: 2024/07/21 09:30:21 by smatthes          #+#    #+#             */
+/*   Updated: 2024/08/23 18:52:03 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "Animal.hpp"
+#include "Cat.hpp"
+#include "Brain.hpp"
+// #include "Dog.hpp"
 #include "external.hpp"
 
-#pragma once
-
-class ScavTrap : public ClapTrap
+int	main(void)
 {
-  public:
-	ScavTrap(void);
-	ScavTrap(std::string trapName);
-	ScavTrap(const ScavTrap &other);
-	ScavTrap &operator=(const ScavTrap &other);
-	~ScavTrap(void);
+	Cat	*C1 = new Cat();
+	C1->getBrain()->fillWithOneIdea("1");
+	Cat	*C2 = new Cat();
+	C2->getBrain()->fillWithOneIdea("2");
 
-	void guardGate(void) const;
-	void attack(const std::string &target);
+	std::cout << C1->getBrain();
+	std::cout << C2->getBrain();
 
-  private:
-	void _initAttrDefaultScav(void);
+	*C2 = *C1;
 
-};
+	std::cout << C2->getBrain();
 
-std::ostream &operator<<(std::ostream &os, ScavTrap const &ScavTrap);
+	delete C1;
+	delete C2;
+
+	return (0);
+}

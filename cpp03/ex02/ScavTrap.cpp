@@ -6,57 +6,55 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 09:25:35 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/21 20:57:18 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/08/23 15:38:59 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 #include "external.hpp"
 
-ScavTrap::ScavTrap(void)
+ScavTrap::ScavTrap(void) 
 {
-	std::cout << "ScavTrap Default constructor called!" << std::endl;
-	this->_initAttrDefaultScav();
-	this->setName("newScavTrap");
-	return ;
-}
-
-ScavTrap::ScavTrap(std::string trapName)
-	: ClapTrap(trapName)
-{
-	std::cout << trapName << ": ScavTrap Constructor called!" << std::endl;
+	std::cout << "<Default constructor> ScavTrap " << this->getName() << std::endl;
 	this->_initAttrDefaultScav();
 	return ;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &other)
-	: ClapTrap()
+ScavTrap::ScavTrap(std::string trapName) 
 {
+	this->setName(trapName);
+	std::cout << "<Name constructor> ScavTrap " << trapName << std::endl;
+	this->_initAttrDefaultScav();
+	return ;
+}
+
+ScavTrap::ScavTrap(const ScavTrap &other) 
+{
+	this->setName("NAMELESS");
+	std::cout << "<Copy constructor> ScavTrap " << this->getName() << std::endl;
 	*this = other;
-	std::cout << "A clone of ScavTrap " << this->getName() << " is constructed." << std::endl;
 	return ;
+}
+ScavTrap &ScavTrap::operator=(const ScavTrap &other)
+{
+	std::cout << "<Copy assignment operator> ";
+	std::cout << "ScavTrap " << this->getName() << " is now a clone of";
+	std::cout << " ScavTrap " << other.getName() << std::endl;
+	if (this == &other)
+	{
+		return (*this);
+	}
+	this->setName(other.getName());
+	this->setHitPoints(other.getHitPoints());
+	this->setEnergyPoints(other.getEnergyPoints());
+	this->setAttackDamage(other.getAttackDamage());
+	return (*this);
 }
 
 ScavTrap::~ScavTrap(void)
 {
-	std::cout << this->getName() << ":ScavTrap Destructor called!" << std::endl;
+	std::cout << "<Destructor> ScavTrap " << this->getName() << std::endl;
 	return ;
-}
-
-ScavTrap &ScavTrap::operator=(const ScavTrap &other)
-{
-	if (this != &other)
-	{
-		ClapTrap::operator=(other);
-	}
-	return (*this);
-}
-
-void ScavTrap::_initAttrDefaultScav(void)
-{
-	this->setHitPoints(100);
-	this->setEnergyPoints(50);
-	this->setAttackDamage(20);
 }
 
 void ScavTrap::guardGate(void) const
@@ -94,6 +92,13 @@ void ScavTrap::attack(const std::string &target)
 		std::cout << " can't attack!";
 		std::cout << std::endl;
 	}
+}
+
+void ScavTrap::_initAttrDefaultScav(void)
+{
+	this->setHitPoints(100);
+	this->setEnergyPoints(50);
+	this->setAttackDamage(20);
 }
 
 std::ostream &operator<<(std::ostream &os, ScavTrap const &scavTrap)

@@ -29,3 +29,4 @@ for folder in "${source_folders[@]}"; do
         echo "Directory $folder does not exist."
     fi
 done
+

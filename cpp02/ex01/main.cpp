@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 09:30:21 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/01 17:33:46 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/08/08 11:32:21 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,5 @@ int	main(void)
 	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-
-	std::cout << std::endl << std::endl << std::endl;
-
-	Fixed const num1(26777216);
-	std::cout << "num1 is " << num1 << std::endl;
-
 	return (0);
 }

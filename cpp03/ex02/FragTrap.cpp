@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 09:25:35 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/21 20:58:31 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/08/23 16:09:24 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,41 +15,47 @@
 
 FragTrap::FragTrap(void)
 {
-	std::cout << "FragTrap Default constructor called!" << std::endl;
-	this->_initAttrDefaultFrag();
-	this->setName("newFragTrap");
-	return ;
-}
-
-FragTrap::FragTrap(std::string trapName)
-	: ClapTrap(trapName)
-{
-	std::cout << trapName << ": FragTrap Constructor called!" << std::endl;
+	std::cout << "<Default constructor> FragTrap " << this->getName() << std::endl;
 	this->_initAttrDefaultFrag();
 	return ;
 }
 
-FragTrap::FragTrap(const FragTrap &other)
-	: ClapTrap()
+FragTrap::FragTrap(std::string trapName) 
 {
+	this->setName(trapName);
+	std::cout << "<Name constructor> FragTrap " << trapName << std::endl;
+	this->_initAttrDefaultFrag();
+	return ;
+}
+
+FragTrap::FragTrap(const FragTrap &other) 
+{
+	this->setName("NAMELESS");
+	std::cout << "<Copy constructor> FragTrap " << this->getName() << std::endl;
 	*this = other;
-	std::cout << "A clone of FragTrap " << this->getName() << " is constructed." << std::endl;
-	return ;
-}
-
-FragTrap::~FragTrap(void)
-{
-	std::cout << this->getName() << ":FragTrap Destructor called!" << std::endl;
 	return ;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &other)
 {
-	if (this != &other)
+	std::cout << "<Copy assignment operator> ";
+	std::cout << "FragTrap " << this->getName() << " is now a clone of";
+	std::cout << " FragTrap " << other.getName() << std::endl;
+	if (this == &other)
 	{
-		ClapTrap::operator=(other);
+		return (*this);
 	}
+	this->setName(other.getName());
+	this->setHitPoints(other.getHitPoints());
+	this->setEnergyPoints(other.getEnergyPoints());
+	this->setAttackDamage(other.getAttackDamage());
 	return (*this);
+}
+
+FragTrap::~FragTrap(void)
+{
+	std::cout << "<Destructor> FragTrap " << this->getName() << std::endl;
+	return ;
 }
 
 void FragTrap::_initAttrDefaultFrag(void)
@@ -69,28 +75,6 @@ void FragTrap::highFivesGuys(void) const
 	else
 	{
 		std::cout << this->getName() << ": FragTrap can't high five you, it's dead!";
-		std::cout << std::endl;
-	}
-}
-
-void FragTrap::attack(const std::string &target)
-{
-	if (this->isAlive() && this->reduceEnergyPoints(1))
-	{
-		std::cout << "FragTrap ";
-		std::cout << this->getName();
-		std::cout << " attacks ";
-		std::cout << target;
-		std::cout << ",causing ";
-		std::cout << this->getAttackDamage();
-		std::cout << " points of damage!";
-		std::cout << std::endl;
-	}
-	else
-	{
-		std::cout << "FragTrap: No Energy or Hit Points, ";
-		std::cout << this->getName();
-		std::cout << " can't attack!";
 		std::cout << std::endl;
 	}
 }

@@ -6,61 +6,53 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 09:25:35 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/21 20:54:12 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/08/23 15:24:11 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "external.hpp"
 
-ClapTrap::ClapTrap(void)
+ClapTrap::ClapTrap(void) : _name("NAMELESS"), _hitPoints(10), _energyPoints(10),
+	_attackDamage(0)
 {
-	std::cout << "Claptrap Default constructor called!" << std::endl;
-	this->_initAttrDefaultClap();
-	this->setName("newClapTrap");
+	std::cout << "<Default constructor> Claptrap " << this->getName() << std::endl;
 	return ;
 }
 
-ClapTrap::ClapTrap(std::string trapName)
+ClapTrap::ClapTrap(std::string trapName) : _name(trapName), _hitPoints(10),
+	_energyPoints(10), _attackDamage(0)
 {
-	std::cout << trapName << ": Claptrap Constructor called!" << std::endl;
-	this->_initAttrDefaultClap();
-	this->setName(trapName);
+	std::cout << "<Name constructor> Claptrap " << trapName << std::endl;
 	return ;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &other)
+ClapTrap::ClapTrap(const ClapTrap &other) : _name("NAMELESS")
 {
+	std::cout << "<Copy constructor> Claptrap " << this->getName() << std::endl;
 	*this = other;
-	std::cout << "A clone of ClapTrap " << this->getName() << " is constructed." << std::endl;
 	return ;
 }
 ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
+	std::cout << "<Copy assignment operator> ";
+	std::cout << "Claptrap " << this->getName() << " is now a clone of";
+	std::cout << " Claptrap " << other.getName() << std::endl;
 	if (this == &other)
 	{
 		return (*this);
 	}
-	std::cout << "ClapTrap " << this->getName();
 	this->setName(other.getName());
 	this->setHitPoints(other.getHitPoints());
 	this->setEnergyPoints(other.getEnergyPoints());
 	this->setAttackDamage(other.getAttackDamage());
-	std::cout << " is now a clone of ClapTrap " << this->getName() << std::endl;
 	return (*this);
 }
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << this->getName() << ":Claptrap Destructor called!" << std::endl;
+	std::cout << "<Destructor> Claptrap " << this->getName() << std::endl;
 	return ;
-}
-
-void ClapTrap::_initAttrDefaultClap(void)
-{
-	this->setHitPoints(10);
-	this->setEnergyPoints(10);
-	this->setAttackDamage(0);
 }
 
 void ClapTrap::attack(const std::string &target)
@@ -183,7 +175,7 @@ std::ostream &operator<<(std::ostream &os, ClapTrap const &clapTrap)
 }
 
 void ClapTrap::printDetail(std::ostream &os, std::string label,
-		std::string (ClapTrap::*getter)() const) const
+	std::string (ClapTrap::*getter)() const) const
 {
 	std::string value = (this->*getter)();
 	os << std::left << std::setw(ClapTrap::_printWidth) << label << ": ";
@@ -191,7 +183,7 @@ void ClapTrap::printDetail(std::ostream &os, std::string label,
 }
 
 void ClapTrap::printDetail(std::ostream &os, std::string label,
-		unsigned int (ClapTrap::*getter)() const) const
+	unsigned int (ClapTrap::*getter)() const) const
 {
 	unsigned int value = (this->*getter)();
 	os << std::left << std::setw(ClapTrap::_printWidth) << label << ": ";

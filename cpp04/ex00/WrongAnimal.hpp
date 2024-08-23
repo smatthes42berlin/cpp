@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 09:22:39 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/23 15:31:28 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/08/23 17:39:55 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
 #include "external.hpp"
 
 #pragma once
 
-class ScavTrap : public ClapTrap
+class WrongAnimal
 {
   public:
-	ScavTrap(void);
-	ScavTrap(std::string trapName);
-	ScavTrap(const ScavTrap &other);
-	ScavTrap &operator=(const ScavTrap &other);
-	~ScavTrap(void);
+	WrongAnimal(void);
+	WrongAnimal(const WrongAnimal &other);
+	WrongAnimal(std::string type);
+	WrongAnimal &operator=(const WrongAnimal &other);
+	~WrongAnimal(void);
 
-	void guardGate(void) const;
-	void attack(const std::string &target);
+	std::string get_type(void) const;
+	void set_type(std::string new_type);
 
-  private:
-	void _initAttrDefaultScav(void);
+	void makeSound(void) const;
+
+  protected:
+	std::string _type;
 
 };
-
-std::ostream &operator<<(std::ostream &os, ScavTrap const &ScavTrap);
