@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 16:01:18 by smatthes          #+#    #+#             */
-/*   Updated: 2024/10/05 12:35:02 by smatthes         ###   ########.fr       */
+/*   Created: 2024/10/03 15:51:56 by smatthes          #+#    #+#             */
+/*   Updated: 2024/10/05 12:39:32 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#pragma once
+#include "Data.hpp"
 #include "external.hpp"
 
-int	main(int argc, char *argv[])
+class Serializer
 {
-	if (argc != 2)
-	{
-		std::cerr << "Usage: ./conversion <literal>" << std::endl;
-		return (1);
-	}
-	std::string const input(argv[1]);
-	try
-	{
-		ScalarConverter::convert(input);
-	}
-	catch (std::exception const &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	return (0);
-}
+  public:
+	static uintptr_t serialize(Data *ptr);
+	static Data *deserialize(uintptr_t raw);
+
+  private:
+	Serializer(void);
+	Serializer(const Serializer &other);
+	Serializer &operator=(const Serializer &other);
+	virtual ~Serializer(void);
+};

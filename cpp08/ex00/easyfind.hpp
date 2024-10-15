@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 16:01:18 by smatthes          #+#    #+#             */
-/*   Updated: 2024/10/05 12:35:02 by smatthes         ###   ########.fr       */
+/*   Created: 2024/10/05 16:04:58 by smatthes          #+#    #+#             */
+/*   Updated: 2024/10/06 12:15:37 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#pragma once
 #include "external.hpp"
 
-int	main(int argc, char *argv[])
+class NotFoundException : public std::exception
 {
-	if (argc != 2)
+	const char *what() const throw()
 	{
-		std::cerr << "Usage: ./conversion <literal>" << std::endl;
-		return (1);
+		return ("Int value not found in container");
 	}
-	std::string const input(argv[1]);
-	try
+};
+
+template <typename T>
+typename T::iterator easyfind(T &container, const int i)
+{
+	typename T::iterator it = std::find(container.begin(), container.end(), i);
+
+	if (it == container.end())
 	{
-		ScalarConverter::convert(input);
+		throw NotFoundException();
 	}
-	catch (std::exception const &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	return (0);
+	return (it);
 }

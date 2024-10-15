@@ -6,14 +6,12 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:51:56 by smatthes          #+#    #+#             */
-/*   Updated: 2024/10/04 17:35:51 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/10/05 12:20:15 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "external.hpp"
-
-class	Form;
 
 class ScalarConverter
 {

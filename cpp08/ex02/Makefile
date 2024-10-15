@@ -6,15 +6,15 @@
 #    By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/21 10:44:02 by smatthes          #+#    #+#              #
-#    Updated: 2024/10/05 15:57:27 by smatthes         ###   ########.fr        #
+#    Updated: 2024/10/05 17:48:38 by smatthes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX 		= c++
 CXXFLAGS 	= -Werror -Wextra -Wall -std=c++98
 
-TARGET 		= identify
-FILES 		= main Base functions
+TARGET 		= array
+FILES 		= main
 SRC			= $(FILES:=.cpp)
 OBJ 		= $(SRC:.cpp=.o)
 

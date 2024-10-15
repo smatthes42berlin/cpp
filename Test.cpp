@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 10:16:45 by smatthes          #+#    #+#             */
-/*   Updated: 2024/07/25 14:16:51 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/08/10 12:45:41 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,41 +15,43 @@
 
 Test::Test()
 {
-	std::cout << "Default Constructor called";
+	std::cout << "Test Default Constructor called";
 	std::cout << std::endl;
 	return ;
 }
 
-Test::Test(int const n) : _foo(n)
+Derived::Derived(int value): Test(value)
 {
-	std::cout << "Numeric Constructor called";
+	std::cout << "Derived Default Constructor called";
 	std::cout << std::endl;
 	return ;
 }
 
-Test::Test(Test const &src)
+Test::Test(int value): _value(value)
 {
-	std::cout << "Copy Constructor called";
+	std::cout << "Test Int Constructor called";
 	std::cout << std::endl;
-	*this = src;
 	return ;
 }
 
 Test::~Test()
 {
-	
-}
-
-Test & Test::operator=(Test const & rhs){
-	std::cout << "Assignment operator called";
+	std::cout << "Test Destructor called";
 	std::cout << std::endl;
-    
-    if(this != &rhs)
-        this->_foo = rhs.getFoo();
-    return *this;
+	return ;
 }
 
-int Test::getFoo() const
+void Derived::show(void) const
 {
-	return (this->_foo);
+	std::cout << "Derived class show method" << std::endl;
+}
+
+void Test::show(void) const
+{
+	std::cout << "Base class show method" << std::endl;
+}
+
+int Test::getValue() const
+{
+	return (this->_value);
 }

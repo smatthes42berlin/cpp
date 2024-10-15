@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 10:16:45 by smatthes          #+#    #+#             */
-/*   Updated: 2024/07/25 14:13:58 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/08/10 12:45:06 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,25 @@ class Test
 {
   public:
 	Test();
-	Test(int const n);
-	Test(Test const & src);
+	Test(int value);
 	~Test();
 
-	Test & operator=(Test const &rhs); 
-
-    int getFoo() const;
+	int getValue() const;
+	void show(void) const;
 
   private:
+	int _value;
+};
 
-  int _foo;
+class Derived : public Test
+{
+  public:
+	Derived(int value);
+	// ~Derived();
+
+	// int getValue() const;
+	void show(void) const;
+
+  private:
+	// int _value;
 };

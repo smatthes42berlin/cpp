@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 16:01:18 by smatthes          #+#    #+#             */
-/*   Updated: 2024/10/05 12:35:02 by smatthes         ###   ########.fr       */
+/*   Created: 2024/10/05 16:04:58 by smatthes          #+#    #+#             */
+/*   Updated: 2024/10/05 17:19:22 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
-#include "external.hpp"
-
-int	main(int argc, char *argv[])
+template <typename T, typename F>
+void	iter(T *arr, int arr_length, F func)
 {
-	if (argc != 2)
+	for (int i = 0; i < arr_length; i++)
 	{
-		std::cerr << "Usage: ./conversion <literal>" << std::endl;
-		return (1);
+		func(arr[i]);
 	}
-	std::string const input(argv[1]);
-	try
-	{
-		ScalarConverter::convert(input);
-	}
-	catch (std::exception const &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	return (0);
 }
+
+template <typename T>
+void	print(T elem)
+{
+	std::cout << elem << " ";
+}
+
+template <typename T>
+void	increment(T &elem)
+{
+	elem++;
+}
+
+
+
+

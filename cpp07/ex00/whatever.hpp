@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 16:01:18 by smatthes          #+#    #+#             */
-/*   Updated: 2024/10/05 12:35:02 by smatthes         ###   ########.fr       */
+/*   Created: 2024/10/05 16:04:58 by smatthes          #+#    #+#             */
+/*   Updated: 2024/10/05 16:28:45 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
-#include "external.hpp"
-
-int	main(int argc, char *argv[])
+template <typename T>
+void	swap(T &a, T &b)
 {
-	if (argc != 2)
-	{
-		std::cerr << "Usage: ./conversion <literal>" << std::endl;
-		return (1);
-	}
-	std::string const input(argv[1]);
-	try
-	{
-		ScalarConverter::convert(input);
-	}
-	catch (std::exception const &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	return (0);
+	T	temp;
+
+	temp = a;
+	a = b;
+	b = temp;
+}
+
+template <typename T>
+T const &min(T const &a, T const &b)
+{
+	return (a < b ? a : b);
+}
+
+template <typename T>
+T const &max(T const &a, T const &b)
+{
+	return (a > b ? a : b);
 }
