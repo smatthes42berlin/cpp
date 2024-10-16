@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                         :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/21 09:22:39 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/22 09:37:40 by smatthes         ###   ########.fr       */
+/*   Created: 2024/09/26 11:16:13 by smatthes          #+#    #+#             */
+/*   Updated: 2024/10/16 10:03:56 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include "Brain.hpp"
-#include "external.hpp"
-
 #pragma once
 
-class Dog : public Animal
+#include "AForm.hpp"
+#include "external.hpp"
+
+class ShrubberyCreationForm : public AForm
 {
   public:
-	Dog(void);
-	Dog(const Dog &other);
-	Dog &operator=(const Dog &other);
-	~Dog(void);
+	ShrubberyCreationForm(const ShrubberyCreationForm &other);
+	ShrubberyCreationForm(std::string target);
+	ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
+	~ShrubberyCreationForm(void);
 
-	void makeSound(void) const;
-
-	Brain *getBrain() const;
+	void execute(Bureaucrat const &executor) const;
 
   private:
-	Brain *_brain;
+	ShrubberyCreationForm(void);
+
+	void execute_for_real() const;
 };
+

@@ -6,13 +6,14 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:14:46 by smatthes          #+#    #+#             */
-/*   Updated: 2024/09/26 09:14:07 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/10/16 09:42:06 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include "external.hpp"
 
-#pragma once
+class	AForm;
 
 class Bureaucrat
 {
@@ -24,11 +25,15 @@ class Bureaucrat
 	Bureaucrat &operator=(const Bureaucrat &other);
 	virtual ~Bureaucrat(void);
 
+	void executeForm(AForm const &form);
+
 	std::string get_name(void) const;
 	int get_grade(void) const;
 
 	void increment_grade(void);
 	void decrement_grade(void);
+
+	void signForm(AForm &form);
 
 	class GradeTooHighException : public std::exception
 	{
@@ -37,6 +42,12 @@ class Bureaucrat
 	};
 
 	class GradeTooLowException : public std::exception
+	{
+		public:
+		virtual const char *what() const throw();
+	};
+
+	class BureaucratNotAuthorisedToExecuteForm : public std::exception
 	{
 		public:
 		virtual const char *what() const throw();

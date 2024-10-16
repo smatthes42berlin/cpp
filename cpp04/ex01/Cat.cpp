@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 09:25:35 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/23 18:51:31 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:42:27 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Cat::Cat(void) : Animal("Cat"), _brain(new Brain)
 	return ;
 }
 
-Cat::Cat(const Cat &other) : Animal("Cat")
+Cat::Cat(const Cat &other) : Animal("Cat"), _brain(NULL)
 {
 	*this = other;
 	std::cout << "<copy constructor> Cat" << std::endl;

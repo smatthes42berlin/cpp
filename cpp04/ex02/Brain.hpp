@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   external.hpp                                       :+:      :+:    :+:   */
+/*   Brain.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/21 09:23:07 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/30 15:44:31 by smatthes         ###   ########.fr       */
+/*   Created: 2024/07/21 09:22:39 by smatthes          #+#    #+#             */
+/*   Updated: 2024/08/22 09:37:40 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "A_Animal.hpp"
+#include "external.hpp"
+
 #pragma once
 
-#include <iomanip>
-#include <iostream>
-#include <string>
+class Brain
+{
+  public:
+	Brain(void);
+	Brain(const Brain &other);
+	Brain &operator=(const Brain &other);
+	~Brain(void);
 
-// #include <limits>
-// #include <cc_type>
-// #include <cstdlib>
+	std::string getIdea(int index) const;
+	void setIdea(int index, std::string idea);
+
+	void fillWithOneIdea(std::string idea);
+
+  private:
+	std::string _ideas[100];
+};
+
+std::ostream &operator<<(std::ostream &os, Brain const &brain);

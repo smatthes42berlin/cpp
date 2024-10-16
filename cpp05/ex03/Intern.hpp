@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   external.hpp                                       :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/21 09:23:07 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/30 15:44:31 by smatthes         ###   ########.fr       */
+/*   Created: 2024/10/16 11:17:39 by smatthes          #+#    #+#             */
+/*   Updated: 2024/10/16 11:20:56 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iomanip>
-#include <iostream>
-#include <string>
+#include "Bureaucrat.hpp"
+#include "external.hpp"
 
-// #include <limits>
-// #include <cc_type>
-// #include <cstdlib>
+class Intern
+{
+  public:
+	Intern(void);
+	Intern(const Intern &other);
+	Intern &operator=(const Intern &other);
+	virtual ~Intern(void);
+
+	AForm *makeForm(std::string form_name, std::string form_target) const;
+};

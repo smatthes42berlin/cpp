@@ -6,7 +6,7 @@
 #    By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/21 10:44:02 by smatthes          #+#    #+#              #
-#    Updated: 2024/08/30 15:35:52 by smatthes         ###   ########.fr        #
+#    Updated: 2024/08/30 16:06:38 by smatthes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CXX 		= c++
 CXXFLAGS 	= -Werror -Wextra -Wall -std=c++98
 
 TARGET 		= animal
-FILES 		=  Brain Animal Cat Dog main
+FILES 		=  Brain A_Animal Cat Dog main
 SRC			= $(FILES:=.cpp)
 OBJ 		= $(SRC:.cpp=.o)
 

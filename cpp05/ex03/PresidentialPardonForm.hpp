@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                         :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/21 09:22:39 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/22 09:37:40 by smatthes         ###   ########.fr       */
+/*   Created: 2024/10/16 10:18:30 by smatthes          #+#    #+#             */
+/*   Updated: 2024/10/16 10:18:43 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include "Brain.hpp"
-#include "external.hpp"
-
 #pragma once
 
-class Dog : public Animal
+#include "AForm.hpp"
+#include "external.hpp"
+
+class PresidentialPardonForm : public AForm
 {
   public:
-	Dog(void);
-	Dog(const Dog &other);
-	Dog &operator=(const Dog &other);
-	~Dog(void);
+	PresidentialPardonForm(const PresidentialPardonForm &other);
+	PresidentialPardonForm(std::string target);
+	PresidentialPardonForm &operator=(const PresidentialPardonForm &other);
+	~PresidentialPardonForm(void);
 
-	void makeSound(void) const;
-
-	Brain *getBrain() const;
+	void execute(Bureaucrat const &executor) const;
 
   private:
-	Brain *_brain;
+	PresidentialPardonForm(void);
+
+	void execute_for_real() const;
 };

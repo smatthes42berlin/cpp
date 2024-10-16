@@ -6,11 +6,12 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:18:18 by smatthes          #+#    #+#             */
-/*   Updated: 2024/09/26 10:05:14 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/10/16 10:35:40 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 #include "external.hpp"
 
 Bureaucrat::Bureaucrat(void) : _name("default"), _grade(75)
@@ -87,13 +88,62 @@ void Bureaucrat::decrement_grade(void)
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Grade too high! It must be between 1 and 150.");
+	return ("Bureaucrat: Grade too high! It must be between 1 and 150.");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Grade too low! It must be between 1 and 150.");
+	return ("Bureaucrat: Grade too low!");
 }
+
+const char *Bureaucrat::BureaucratNotAuthorisedToExecuteForm::what() const throw()
+{
+	return ("Bureaucrat: Grade too low! Bureaucrat not authorised to execute form!");
+}
+
+void Bureaucrat::signForm(AForm &form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << this->get_name();
+		std::cout << " signed ";
+		std::cout << form.get_name();
+		std::cout << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << this->get_name();
+		std::cout << " couldn't sign ";
+		std::cout << form.get_name();
+		std::cout << " because ";
+		std::cout << e.what() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(AForm const &form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->get_name();
+		std::cout << " executed ";
+		std::cout << form.get_name();
+		std::cout << "!";
+		std::cout << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << this->get_name();
+		std::cout << " couldn't execute ";
+		std::cout << form.get_name();
+		std::cout << " because ";
+		std::cout << e.what() << std::endl;
+	}
+}
+
+
+
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat const &bureaucrat)
 {
@@ -103,4 +153,3 @@ std::ostream &operator<<(std::ostream &os, Bureaucrat const &bureaucrat)
 	os << "." << std::endl;
 	return (os);
 }
-

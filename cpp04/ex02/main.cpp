@@ -6,11 +6,11 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 09:30:21 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/30 16:43:36 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:48:23 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "A_Animal.hpp"
 #include "Brain.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
@@ -21,10 +21,7 @@ void	runMyTests(void);
 
 int	main(void)
 {
-	Dog basic;
-	{
-		Dog tmp = basic;
-	}
+	// A_Animal test; 
 	runMyTests();
 	runTestsSubject();
 	return (0);
@@ -50,9 +47,9 @@ void	runMyTests(void)
 void	runTestsSubject(void)
 {
 	int				i;
-	Animal			*animals[100];
-	const Animal	*an1 = new Dog();
-	const Animal	*an2 = new Cat();
+	A_Animal			*animals[100];
+	const A_Animal	*an1 = new Dog();
+	const A_Animal	*an2 = new Cat();
 	delete			an1;
 	delete			an2;
 

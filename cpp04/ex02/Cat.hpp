@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   external.hpp                                       :+:      :+:    :+:   */
+/*   Cat.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/21 09:23:07 by smatthes          #+#    #+#             */
-/*   Updated: 2024/08/30 15:44:31 by smatthes         ###   ########.fr       */
+/*   Created: 2024/07/21 09:22:39 by smatthes          #+#    #+#             */
+/*   Updated: 2024/08/22 09:37:40 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "A_Animal.hpp"
+#include "external.hpp"
+#include "Brain.hpp"
+
 #pragma once
 
-#include <iomanip>
-#include <iostream>
-#include <string>
+class Cat : public A_Animal
+{
+  public:
+	Cat(void);
+	Cat(const Cat &other);
+	Cat &operator=(const Cat &other);
+	~Cat(void);
 
-// #include <limits>
-// #include <cc_type>
-// #include <cstdlib>
+	void makeSound(void) const;
+
+	Brain *getBrain() const;
+
+  private:
+	Brain *_brain;
+};
