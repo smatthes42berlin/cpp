@@ -6,23 +6,23 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:54:20 by smatthes          #+#    #+#             */
-/*   Updated: 2024/10/17 14:26:43 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:01:15 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "external.hpp"
 
-template <typename T, typename Container = std::deque<T>>
+template <typename T, typename Container = std::deque<T> >
 //
 class MutantStack : public std::stack<T, Container>
 {
+  public:
 	typedef typename Container::iterator iterator;
 	typedef typename Container::const_iterator const_iterator;
 	typedef typename Container::reverse_iterator reverse_iterator;
 	typedef typename Container::const_reverse_iterator const_reverse_iterator;
 
-  public:
 	MutantStack() : std::stack<T, Container>()
 	{
 	}
