@@ -6,7 +6,6 @@ source_folders=(
     "ex00"
     "ex01"
     "ex02"
-    "ex03"
 )
 
 for folder in "${source_folders[@]}"; do

@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:12:19 by smatthes          #+#    #+#             */
-/*   Updated: 2024/10/05 13:45:02 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:08:46 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	identify(Base &p)
 	std::cout << "Identifying as reference" << std::endl;
 	try
 	{
-		dynamic_cast<A &>(p);
+		(void)dynamic_cast<A &>(p);
 		std::cout << "Instance of A" << std::endl;
 		return ;
 	}
@@ -72,7 +72,7 @@ void	identify(Base &p)
 	}
 	try
 	{
-		dynamic_cast<B &>(p);
+		(void)dynamic_cast<B &>(p);
 		std::cout << "Instance of B" << std::endl;
 		return ;
 	}
@@ -82,7 +82,7 @@ void	identify(Base &p)
 	}
 	try
 	{
-		dynamic_cast<C &>(p);
+		(void)dynamic_cast<C &>(p);
 		std::cout << "Instance of C" << std::endl;
 		return ;
 	}

@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:52:06 by smatthes          #+#    #+#             */
-/*   Updated: 2024/10/06 16:46:23 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/10/17 09:57:30 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ void Span::addNumber(int num)
 	else
 		this->_content.push_back(num);
 }
-
-
 
 unsigned int Span::longestSpan(void) const
 {

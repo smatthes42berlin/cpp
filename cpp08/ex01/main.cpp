@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:01:18 by smatthes          #+#    #+#             */
-/*   Updated: 2024/10/06 16:50:08 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/10/17 10:10:45 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,37 +18,38 @@ void	test_add_number(void);
 void	test_add_numbers(void);
 void	test_shortest_longest_span(void);
 void	test_really_big_span(void);
+void	tests_from_subject(void);
 
 int	main(void)
 {
+	tests_from_subject();
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << "********test_canonical_functions*******";
+	std::cout << std::endl;
+	std::cout << std::endl;
 	test_canonical_functions();
 	std::cout << std::endl;
 	std::cout << std::endl;
-	std::cout << "***************";
+	std::cout << "********test_add_number*******";
 	std::cout << std::endl;
 	std::cout << std::endl;
 	test_add_number();
 	std::cout << std::endl;
 	std::cout << std::endl;
-	std::cout << "***************";
+	std::cout << "********test_add_numbers*******";
 	std::cout << std::endl;
 	std::cout << std::endl;
 	test_add_numbers();
 	std::cout << std::endl;
 	std::cout << std::endl;
-	std::cout << "***************";
+	std::cout << "********test_shortest_longest_span*******";
 	std::cout << std::endl;
 	std::cout << std::endl;
 	test_shortest_longest_span();
 	std::cout << std::endl;
 	std::cout << std::endl;
-	std::cout << "***************";
-	std::cout << std::endl;
-	std::cout << std::endl;
-	test_shortest_longest_span();
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << "***************";
+	std::cout << "********test_really_big_span*******";
 	std::cout << std::endl;
 	std::cout << std::endl;
 	test_really_big_span();
@@ -85,12 +86,10 @@ void	test_shortest_longest_span(void)
 	span_test.addNumber(14);
 	span_test.addNumber(24);
 	span_test.addNumber(-209);
-	std::cout << std::endl
-				<< "Shortest Span:";
+	std::cout << std::endl << "Shortest Span:";
 	std::cout << span_test.shortestSpan();
 	std::cout << std::endl;
-	std::cout << std::endl
-				<< "Longest Span:";
+	std::cout << std::endl << "Longest Span:";
 	std::cout << span_test.longestSpan();
 	std::cout << std::endl;
 	try
@@ -180,6 +179,7 @@ void	test_add_number(void)
 	{
 		std::cerr << "Error: ";
 		std::cerr << e.what() << '\n';
+		span_test.print();
 	}
 }
 
@@ -204,4 +204,17 @@ void	test_canonical_functions(void)
 	std::cout << "Copy assigned span after assignemnt" << std::endl;
 	span_copy_assignment.print();
 	std::cout << std::endl;
+}
+
+void	tests_from_subject(void)
+{
+	Span	sp = Span(5);
+
+	sp.addNumber(6);
+	sp.addNumber(3);
+	sp.addNumber(17);
+	sp.addNumber(9);
+	sp.addNumber(11);
+	std::cout << sp.shortestSpan() << std::endl;
+	std::cout << sp.longestSpan() << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:52:06 by smatthes          #+#    #+#             */
-/*   Updated: 2024/10/05 11:55:44 by smatthes         ###   ########.fr       */
+/*   Updated: 2024/10/16 15:05:53 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,10 +202,9 @@ void ScalarConverter::print_float(float f)
 		std::cout << static_cast<int>(f);
 	std::cout << std::endl;
 	std::cout << "float: ";
-	std::cout << std::fixed << std::setprecision(6);
+	std::cout << std::fixed << std::showpoint;
 	std::cout << f << "f";
 	std::cout << std::endl;
-	std::cout << std::fixed << std::setprecision(16);
 	std::cout << "double: ";
 	std::cout << static_cast<double>(f);
 	std::cout << std::endl;
@@ -231,7 +230,7 @@ void ScalarConverter::print_double(double d)
 	else
 		std::cout << static_cast<int>(d);
 	std::cout << std::endl;
-	std::cout << std::fixed << std::setprecision(6);
+	std::cout << std::fixed << std::showpoint;
 	std::cout << "float: ";
 	f = static_cast<float>(d);
 	if (!ScalarConverter::is_inf(d) && (d < static_cast<double>(FLT_MIN)
@@ -240,7 +239,6 @@ void ScalarConverter::print_double(double d)
 	else
 		std::cout << f << "f";
 	std::cout << std::endl;
-	std::cout << std::fixed << std::setprecision(16);
 	std::cout << "double: ";
 	std::cout << d;
 	std::cout << std::endl;

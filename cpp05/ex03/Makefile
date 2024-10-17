@@ -6,7 +6,7 @@
 #    By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/21 10:44:02 by smatthes          #+#    #+#              #
-#    Updated: 2024/10/16 10:20:17 by smatthes         ###   ########.fr        #
+#    Updated: 2024/10/16 13:45:06 by smatthes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CXX 		= c++
 CXXFLAGS 	= -Werror -Wextra -Wall -std=c++98
 
 TARGET 		= bureaucrat
-FILES 		= main Bureaucrat AForm ShrubberyCreationForm RobotomyRequestForm PresidentialPardonForm
+FILES 		= main Bureaucrat AForm ShrubberyCreationForm RobotomyRequestForm PresidentialPardonForm Intern
 SRC			= $(FILES:=.cpp)
 OBJ 		= $(SRC:.cpp=.o)
 
