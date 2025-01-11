@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMe.hpp                                :+:      :+:    :+:   */
+/*   PmergeMeVector.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,22 +11,22 @@
 /* ************************************************************************** */
 
 #pragma once
-#include "PmergeMeVector.hpp"
-#include "PmergeMeDeque.hpp"
 #include "external.hpp"
 
-#define PRINT_DEBUG false
+typedef std::pair<int, int> int_pair;
 
-class PmergeMe
+class PmergeMeVector
 {
   public:
-	PmergeMe();
-	PmergeMe(int argc, char **argv);
-	PmergeMe(const PmergeMe &other);
-	PmergeMe &operator=(const PmergeMe &other);
-	virtual ~PmergeMe(void);
+	PmergeMeVector();
+	PmergeMeVector(const PmergeMeVector &other);
+	PmergeMeVector &operator=(const PmergeMeVector &other);
+	virtual ~PmergeMeVector(void);
 
-	void sort(void);
+	void sort(int argc,
+				char **argv,
+				bool printDebug);
+	void printVector(std::vector<int> vec);
 
 	class ParsingException : public std::exception
 	{
@@ -44,10 +44,35 @@ class PmergeMe
 		virtual char const *what() const throw();
 	};
 
+	std::vector<int> mainChain;
+	std::vector<int> inputSequenceOrg;
+	clock_t timeNeeded;
+
   private:
-  	int argc;
+	clock_t timeBefore;
+	clock_t timeAfter;
+	std::vector<int_pair> sortedPairs;
+	std::vector<int> inputSequence;
+	std::vector<int> pend;
+	int argc;
 	char **argv;
-	PmergeMeVector vectorSorter;
-	PmergeMeDeque dequeSorter;
-	double elapsedTimeInMicroseconds;
+	int numComparisons;
+	bool odd;
+	int oddRemainingB;
+
+	void readInputSequence();
+	int stringToInt(char *curToken);
+	void createSortedPairs();
+	void mergePairs(std::vector<int_pair> &vec, int left, int mid, int right);
+	void mergeSortPairs(std::vector<int_pair> &vec, int left, int right);
+	void createMainChainNPend();
+	void insertPendIntoMainChain();
+
+	unsigned int jacobsthalNum(unsigned int num);
+
+	void printPairs(std::vector<int_pair> vec);
+	void printRemainder();
+	void printNumComparisons();
 };
+
+bool	countComparatorBinarySearch(int a, int b);

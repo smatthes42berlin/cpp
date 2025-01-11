@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMe.hpp                                :+:      :+:    :+:   */
+/*   PmergeMeDeque.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,22 +11,22 @@
 /* ************************************************************************** */
 
 #pragma once
-#include "PmergeMeVector.hpp"
-#include "PmergeMeDeque.hpp"
 #include "external.hpp"
 
-#define PRINT_DEBUG false
+typedef std::pair<int, int> int_pair;
 
-class PmergeMe
+class PmergeMeDeque
 {
   public:
-	PmergeMe();
-	PmergeMe(int argc, char **argv);
-	PmergeMe(const PmergeMe &other);
-	PmergeMe &operator=(const PmergeMe &other);
-	virtual ~PmergeMe(void);
+	PmergeMeDeque();
+	PmergeMeDeque(const PmergeMeDeque &other);
+	PmergeMeDeque &operator=(const PmergeMeDeque &other);
+	virtual ~PmergeMeDeque(void);
 
-	void sort(void);
+	void sort(int argc,
+				char **argv,
+				bool printDebug);
+	void printDeque(std::deque<int> deque);
 
 	class ParsingException : public std::exception
 	{
@@ -44,10 +44,35 @@ class PmergeMe
 		virtual char const *what() const throw();
 	};
 
+	std::deque<int> mainChain;
+	std::deque<int> inputSequenceOrg;
+	clock_t timeNeeded;
+
   private:
-  	int argc;
+	clock_t timeBefore;
+	clock_t timeAfter;
+	std::deque<int_pair> sortedPairs;
+	std::deque<int> inputSequence;
+	std::deque<int> pend;
+	int argc;
 	char **argv;
-	PmergeMeVector vectorSorter;
-	PmergeMeDeque dequeSorter;
-	double elapsedTimeInMicroseconds;
+	int numComparisons;
+	bool odd;
+	int oddRemainingB;
+
+	void readInputSequence();
+	int stringToInt(char *curToken);
+	void createSortedPairs();
+	void mergePairs(std::deque<int_pair> &deque, int left, int mid, int right);
+	void mergeSortPairs(std::deque<int_pair> &deque, int left, int right);
+	void createMainChainNPend();
+	void insertPendIntoMainChain();
+
+	unsigned int jacobsthalNum(unsigned int num);
+
+	void printPairs(std::deque<int_pair> deque);
+	void printRemainder();
+	void printNumComparisons();
 };
+
+bool	countComparatorBinarySearch(int a, int b);

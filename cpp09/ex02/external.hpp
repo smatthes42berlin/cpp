@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 09:23:07 by smatthes          #+#    #+#             */
-/*   Updated: 2025/01/05 18:05:29 by smatthes         ###   ########.fr       */
+/*   Updated: 2025/01/11 16:42:34 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@
 #include <fstream>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <ctime>
 
 
