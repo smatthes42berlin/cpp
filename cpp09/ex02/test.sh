@@ -1,5 +1,5 @@
-# clear
-# make re
+clear
+make re
 
 test()
 {
@@ -9,10 +9,6 @@ test()
     testNumbers=`shuf -i ${lowerBound}-${upperBound} -n ${numberElem} | tr "\n" " "`
     ./PmergeMe $testNumbers
 }
-
-test 1 100 11;
-
-exit 
 
 echo ERROR CASES
 echo
@@ -49,14 +45,19 @@ echo
 echo
 ./PmergeMe 11 10 9 8 7 6 5 4 3 2 1 
 echo
+read -r
 echo 100 Numbers
 test 1 101 100;
+read -r
 echo 1000 Numbers
 test 1 1001 1000;
+read -r
 echo 3000 Numbers
-test 1 3001 300;
+test 1 3001 3000;
+read -r
 echo 5000 Numbers
 test 1 5001 5000;
+read -r
 
 
 testNumbers=`shuf -i 1-101 -n 100 | tr "\n" " "`
